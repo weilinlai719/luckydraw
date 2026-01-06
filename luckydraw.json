@@ -1,0 +1,9 @@
+{
+  "prizes": [
+    { "level": "1等", "name": "電影票", "quota": 1, "remaining": 1 },
+    { "level": "2等", "name": "炸物", "quota": 3, "remaining": 3 },
+    { "level": "3等", "name": "零食", "quota": 5, "remaining": 5 },
+    { "level": "4等", "name": "文具-自動筆+橡皮擦+立可帶", "quota": 7, "remaining": 7 },
+    { "level": "5等", "name": "文具-筆記本+橡皮擦", "quota": 9, "remaining": 9 }
+  ]
+}

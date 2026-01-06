@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>智慧鐵人創意社期末抽獎</title>
+    <style>
+        body { font-family: "Microsoft JhengHei", sans-serif; background: #fff5f5; display: flex; flex-direction: column; align-items: center; padding: 5px; }
+        .header { font-size: 2rem; font-weight: bold; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        
+        /* 紅框觸控區 */
+        .box-container {
+            background: #d32f2f; width: 600px; height: 300px;
+            border-radius: 20px; border: 8px solid #ffc107;
+            box-shadow: 0 10px 0 #b71c1c;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            cursor: pointer; transition: transform 0.1s; color: white; margin-bottom: 30px;
+        }
+        .box-container:active { transform: scale(0.98); box-shadow: 0 5px 0 #b71c1c; }
+        
+        .display-q { font-size: 5rem; font-weight: bold; margin-bottom: 10px; }
+        .display-hint { font-size: 1.8rem; color: #ffc107; font-weight: bold; }
+
+        /* 下方清單 */
+        .prize-card { background: white; width: 600px; border-radius: 15px; padding: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .prize-card h3 { margin-top: 0; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .prize-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f9f9f9; font-size: 1.2rem; }
+        .out-of-stock { color: #ccc; text-decoration: line-through; }
+    </style>
+</head>
+<body>
+
+    <div class="header">🎁 智慧鐵人創意社期末抽獎 🎁</div>
+
+    <div class="box-container" id="box-display" onclick="startDraw()">
+        <div id="level-text" class="display-q">？</div>
+        <div id="name-text" class="display-hint">請點擊抽獎</div>
+    </div>
+
+    <div class="prize-card">
+        <h3>目前獎項剩餘</h3>
+        <div id="prize-stats">載入中...</div>
+    </div>
+
+    <script src="luckydraw.js"></script>
+</body>
+</html>
