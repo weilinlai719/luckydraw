@@ -4,31 +4,85 @@
     <meta charset="UTF-8">
     <title>抽獎</title>
     <style>
-        body { font-family: "Microsoft JhengHei", sans-serif; background: #fff5f5; display: flex; flex-direction: column; align-items: center; padding: 20px; }
-        .main-layout { display: flex; gap: 20px; max-width: 1000px; width: 100%; flex-wrap: wrap; justify-content: center; }
-        
-        /* 紅框觸控區 */
-        .box-container {
-            background: #d32f2f; width: 500px; height: 250px;
-            border-radius: 20px; border: 8px solid #ffc107;
-            box-shadow: 0 10px 0 #b71c1c;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            cursor: pointer; transition: transform 0.1s; color: white; margin-bottom: 20px;
-        }
-        .box-container:active { transform: scale(0.98); box-shadow: 0 5px 0 #b71c1c; }
-        .display-q { font-size: 4rem; font-weight: bold; margin-bottom: 5px; }
-        .display-hint { font-size: 1.5rem; color: #ffc107; font-weight: bold; }
+    body { 
+        font-family: "Microsoft JhengHei", sans-serif; 
+        background: #fff5f5; 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        padding: 10px; 
+        margin: 0;
+    }
 
-        /* 面板與清單 */
-        .card { background: white; border-radius: 10px; padding: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
-        .input-group { display: flex; gap: 5px; margin-bottom: 15px; }
-        input { padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
-        button.add-btn { background: #28a745; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; }
-        
-        .list-container { width: 300px; max-height: 500px; overflow-y: auto; }
-        .list-item { padding: 8px; border-bottom: 1px dashed #ccc; font-size: 0.9rem; }
-        .prize-item { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid #eee; }
-    </style>
+    /* 關鍵修改：讓主佈局永遠呈一直線 */
+    .main-layout { 
+        display: flex; 
+        flex-direction: column; /* 強制垂直排列 */
+        align-items: center; 
+        width: 100%; 
+        max-width: 600px; /* 限制最大寬度，避免電腦版太寬 */
+        gap: 20px; 
+    }
+    
+    /* 紅框觸控區：寬度調整為 100% 填滿容器 */
+    .box-container {
+        background: #d32f2f; 
+        width: 100%; 
+        max-width: 500px; 
+        height: 250px;
+        border-radius: 20px; 
+        border: 8px solid #ffc107;
+        box-shadow: 0 10px 0 #b71c1c;
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center;
+        cursor: pointer; 
+        transition: transform 0.1s; 
+        color: white;
+    }
+    .box-container:active { transform: scale(0.98); box-shadow: 0 5px 0 #b71c1c; }
+    .display-q { font-size: 4rem; font-weight: bold; margin-bottom: 5px; }
+    .display-hint { font-size: 1.5rem; color: #ffc107; font-weight: bold; }
+
+    /* 卡片區塊：全部調整為 100% 寬度 */
+    .card { 
+        background: white; 
+        border-radius: 10px; 
+        padding: 15px; 
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+        width: 100%; 
+        box-sizing: border-box; /* 確保 padding 不會撐破寬度 */
+    }
+
+    .input-group { 
+        display: flex; 
+        flex-wrap: wrap; /* 讓輸入框在小螢幕也能自動換行 */
+        gap: 5px; 
+        margin-bottom: 15px; 
+    }
+    
+    input { padding: 8px; border: 1px solid #ddd; border-radius: 4px; flex: 1; min-width: 60px; }
+    button.add-btn { background: #28a745; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; }
+    
+    /* 中獎紀錄 List：寬度改為 100%，並設定適當高度 */
+    .list-container { 
+        width: 100%; 
+        max-height: 400px; 
+        overflow-y: auto; 
+    }
+    
+    .list-item { padding: 8px; border-bottom: 1px dashed #ccc; font-size: 0.9rem; }
+    .prize-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #eee; }
+    
+    /* 讓加減按鈕稍微大一點方便點擊 */
+    .prize-item button { 
+        padding: 2px 8px; 
+        margin-left: 5px; 
+        cursor: pointer;
+    }
+</style>
+
 </head>
 <body>
 
